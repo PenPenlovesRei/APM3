@@ -1,0 +1,256 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"                    
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                    mc:Ignorable="d">
+
+						  <!-- CODE BASE SUR LE THEME SWITCISH -->
+    <Style TargetType="{x:Type GameDetails}">
+	
+	
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type GameDetails}">
+                    <Grid Background="Black"
+                          x:Name="PART_ViewHost"
+                          d:DesignWidth="{StaticResource DesignWidth}"
+                          d:DesignHeight="{StaticResource DesignHeight}"
+                          d:DataContext="{x:Static DesignMainViewModel.DesignSelectedGameIntance}"
+                          KeyboardNavigation.DirectionalNavigation="Contained"
+                          KeyboardNavigation.TabNavigation="Contained">
+                        
+                        <Grid.Resources>
+                            <Storyboard x:Key="ScrollTitleAnimation" RepeatBehavior="Forever">
+                                <DoubleAnimation Storyboard.TargetName="MoveTitleTransform"
+                                 Storyboard.TargetProperty="X"
+                                 From="1920" To="-2400"
+                                 Duration="0:0:16"
+                                 RepeatBehavior="Forever"/>
+                            </Storyboard>
+                        </Grid.Resources>
+
+                        <Grid.Triggers>
+                            <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                                <BeginStoryboard Storyboard="{StaticResource ScrollTitleAnimation}"/>
+                            </EventTrigger>
+                        </Grid.Triggers>
+                        
+                     <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+						
+						  <!-- Bandeau (superposé à la vidéo) -->
+                        <Grid Grid.Row="0" Height="110" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="0,0,0,0" Panel.ZIndex="1">
+                                <Grid.Background>
+									<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+										<GradientStop Color="Black" Offset="0" />
+										<GradientStop Color="Black" Offset="0.4" />
+                                    <GradientStop Color="#00000000" Offset="1" />
+									</LinearGradientBrush>
+								</Grid.Background>
+							
+							<Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Image du réseau en surimpression -->
+                            <Image Grid.Column="0" Margin="20.833,11.156,1370.735,23.844" 
+                                   Source="../Images/network.png" Stretch="Fill" 
+                                   Height="75" Width="75"/>
+								   <!-- Ombre en haut -->
+                                <TextBlock Foreground="Black"
+           HorizontalAlignment="Center" VerticalAlignment="Center"
+           FontSize="48" Text="FREE PLAY"
+           Margin="843.275,21.156,403.343,25"
+           FontWeight="Bold">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect Color="Black" ShadowDepth="1" Direction="270" BlurRadius="0" Opacity="1"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+
+                                <!-- Ombre en bas -->
+                                <TextBlock Foreground="Black"
+           HorizontalAlignment="Center" VerticalAlignment="Center"
+           FontSize="48" Text="FREE PLAY"
+           Margin="843.275,21.156,403.343,25"
+           FontWeight="Bold">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect Color="Black" ShadowDepth="1" Direction="90" BlurRadius="0" Opacity="1"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+
+                                <!-- Ombre à gauche -->
+                                <TextBlock Foreground="Black"
+           HorizontalAlignment="Center" VerticalAlignment="Center"
+           FontSize="48" Text="FREE PLAY"
+           Margin="843.275,21.156,403.343,25"
+           FontWeight="Bold">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect Color="Black" ShadowDepth="1" Direction="180" BlurRadius="0" Opacity="1"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+
+                                <!-- Ombre à droite -->
+                                <TextBlock Foreground="Black"
+           HorizontalAlignment="Center" VerticalAlignment="Center"
+           FontSize="48" Text="FREE PLAY"
+           Margin="843.275,21.156,403.343,25"
+           FontWeight="Bold">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect Color="Black" ShadowDepth="1" Direction="0" BlurRadius="0" Opacity="1"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+
+                                <!-- Texte blanc au-dessus -->
+                                <TextBlock Foreground="White"
+           HorizontalAlignment="Center" VerticalAlignment="Center"
+           FontSize="48" Text="FREE PLAY"
+           Margin="843.275,21.156,403.343,25"
+           FontWeight="Bold"/>
+
+                                <!-- Ombre haut -->
+                                <TextBlock Foreground="Black"
+           HorizontalAlignment="Left" VerticalAlignment="Center"
+           FontSize="48" Text="A1"
+           Margin="1831.443,21.156,-411.202,25"
+           FontWeight="Bold">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect Color="Black" ShadowDepth="1" Direction="270" BlurRadius="0" Opacity="1"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+
+                                <!-- Ombre bas -->
+                                <TextBlock Foreground="Black"
+           HorizontalAlignment="Left" VerticalAlignment="Center"
+           FontSize="48" Text="A1"
+           Margin="1831.443,21.156,-411.202,25"
+           FontWeight="Bold">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect Color="Black" ShadowDepth="1" Direction="90" BlurRadius="0" Opacity="1"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+
+                                <!-- Ombre gauche -->
+                                <TextBlock Foreground="Black"
+           HorizontalAlignment="Left" VerticalAlignment="Center"
+           FontSize="48" Text="A1"
+           Margin="1831.443,21.156,-411.202,25"
+           FontWeight="Bold">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect Color="Black" ShadowDepth="1" Direction="180" BlurRadius="0" Opacity="1"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+
+                                <!-- Ombre droite -->
+                                <TextBlock Foreground="Black"
+           HorizontalAlignment="Left" VerticalAlignment="Center"
+           FontSize="48" Text="A1"
+           Margin="1831.443,21.156,-411.202,25"
+           FontWeight="Bold">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect Color="Black" ShadowDepth="1" Direction="0" BlurRadius="0" Opacity="1"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+
+                                <!-- Texte blanc au-dessus -->
+                                <TextBlock Foreground="White"
+           HorizontalAlignment="Left" VerticalAlignment="Center"
+           FontSize="48" Text="A1"
+           Margin="1831.443,21.156,-411.202,25"
+           FontWeight="Bold"/>
+								
+                            </Grid>                   
+	<!-- FIN 1ere ligne du haut -->	
+	
+
+                        <!-- Bandeau en bas (superposé à la vidéo) -->
+                        <Grid Grid.Row="0" Height="110" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="0,0,0,0" Panel.ZIndex="2">
+                                <Grid.Background>
+									<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#00000000" Offset="0" /> <!-- Transparence en haut -->
+										<GradientStop Color="Black" Offset="0.75" /> <!-- Noir au milieu -->
+										<GradientStop Color="Black" Offset="1" /> <!-- Noir en bas -->
+									</LinearGradientBrush>
+								</Grid.Background>
+
+                            <!-- 3 Images en surimpression en bas -->
+                            <Grid HorizontalAlignment="Left" VerticalAlignment="Bottom" Panel.ZIndex="3">
+							    <Grid.ColumnDefinitions>
+								    <ColumnDefinition Width="Auto" />
+								    <ColumnDefinition Width="Auto" />
+								    <ColumnDefinition Width="Auto" />
+							    </Grid.ColumnDefinitions>
+
+							    <!-- Première image BAS   Margin="Left,Top,Right,Bottom" -->
+							    <Image Grid.Column="0" Margin="15,52,10,14" 
+								       Source="../Images/headphone-icon-touch.png" Stretch="Fill" 
+								       Height="48" Width="75"/>
+
+							    <!-- Deuxième image BAS -->
+							    <Image Grid.Column="1" Margin="0,52,10,14" 
+								       Source="../Images/standby-ic-icon ON.png" Stretch="Fill" 
+								       Height="48" Width="75"/>
+
+							    <!-- Troisième image BAS -->
+							    <Image Grid.Column="2" Margin="0,52,10,14" 
+								       Source="../Images/gamepad-about-iconblue.png" Stretch="Fill" 
+								       Height="48" Width="75"/>
+						    </Grid>
+                        </Grid>
+                        
+                        <!-- Zone défilante du titre (placée au-dessus de tous les éléments) -->
+                        <Canvas ClipToBounds="True" Height="70" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="0,0,0,8" Panel.ZIndex="10">
+                            <TextBlock x:Name="GameTitleScrolling" Foreground="White"
+                                       FontSize="48" FontFamily="Yu Gothic Medium" FontWeight="Bold"
+                                       Height="70" Canvas.Top="0" Canvas.Left="0">
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="Playing Demo - {0}">
+                                        <Binding Path="Name"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                                <TextBlock.RenderTransform>
+                                    <TranslateTransform x:Name="MoveTitleTransform"/>
+                                </TextBlock.RenderTransform>
+                                <TextBlock.Effect>
+                                    <DropShadowEffect Color="Black" 
+                                                      Direction="315" 
+                                                      ShadowDepth="4" 
+                                                      Opacity="1.0" 
+                                                      BlurRadius="0"/>
+                                </TextBlock.Effect>
+                            </TextBlock>
+                        </Canvas>
+                                               
+                   <!-- MAIN -->
+                        <!-- BOUTON INVISIBLE POUR LANCER LE JEU -->
+                        <Grid Grid.Column="0" Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>                           
+                            <ButtonEx Style="{DynamicResource ButtonContextOptions}"
+                                      x:Name="PART_ButtonContext"
+                                      Focusable="True"   
+                                      IsTabStop="True"   
+                                      Opacity="0" />   
+                        </Grid>
+                        <!-- VIDEO -->
+                        <Grid Grid.Column="0" Grid.Row="0" Tag="{DynamicResource UseAbsoluteExtraMetadataPath}">
+                            <Grid Background="black" Tag="{DynamicResource Trailers}" Style="{DynamicResource TrailersStyle}">
+                                <ContentControl x:Name="ExtraMetadataLoader_VideoLoaderControl_NoControls_Sound">
+                                </ContentControl>								
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=ExtraMetadataLoader_VideoLoaderControl_NoControls_Sound, Path=Content.SettingsModel.Settings.IsVideoPlaying}" Value="{StaticResource True}">
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

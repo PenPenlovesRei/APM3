@@ -1,0 +1,410 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                    mc:Ignorable="d">
+					
+					 <!-- ANIMATION ROND ROSE -->
+    <Storyboard x:Key="ZoomTriangle">
+        <!-- Dézoom (Zoom arrière) pour le rond rose -->
+        <DoubleAnimation 
+            Storyboard.TargetName="RondRoseImage" 
+            Storyboard.TargetProperty="ScaleX"
+            From="1.0" To="0.0" Duration="0:0:0.25" />
+        <DoubleAnimation 
+            Storyboard.TargetName="RondRoseImage" 
+            Storyboard.TargetProperty="ScaleY"
+            From="1.0" To="0.0" Duration="0:0:0.25" />
+
+        <!-- Zoom (Zoom avant) pour le rond rose -->
+        <DoubleAnimation 
+            Storyboard.TargetName="RondRoseImage" 
+            Storyboard.TargetProperty="ScaleX"
+            From="0.0" To="1.0" Duration="0:0:0.25" BeginTime="0:0:0.25" />
+        <DoubleAnimation 
+            Storyboard.TargetName="RondRoseImage" 
+            Storyboard.TargetProperty="ScaleY"
+            From="0.0" To="1.0" Duration="0:0:0.25" BeginTime="0:0:0.25" />
+            
+        <!-- Dézoom (Zoom arrière) pour la flèche gauche -->
+        <DoubleAnimation 
+            Storyboard.TargetName="LeftArrowScale" 
+            Storyboard.TargetProperty="ScaleX"
+            From="1.0" To="0.0" Duration="0:0:0.25" />
+        <DoubleAnimation 
+            Storyboard.TargetName="LeftArrowScale" 
+            Storyboard.TargetProperty="ScaleY"
+            From="1.0" To="0.0" Duration="0:0:0.25" />
+
+        <!-- Zoom (Zoom avant) pour la flèche gauche -->
+        <DoubleAnimation 
+            Storyboard.TargetName="LeftArrowScale" 
+            Storyboard.TargetProperty="ScaleX"
+            From="0.0" To="1.0" Duration="0:0:0.25" BeginTime="0:0:0.25" />
+        <DoubleAnimation 
+            Storyboard.TargetName="LeftArrowScale" 
+            Storyboard.TargetProperty="ScaleY"
+            From="0.0" To="1.0" Duration="0:0:0.25" BeginTime="0:0:0.25" />
+            
+        <!-- Dézoom (Zoom arrière) pour la flèche droite -->
+        <DoubleAnimation 
+            Storyboard.TargetName="RightArrowScale" 
+            Storyboard.TargetProperty="ScaleX"
+            From="1.0" To="0.0" Duration="0:0:0.25" />
+        <DoubleAnimation 
+            Storyboard.TargetName="RightArrowScale" 
+            Storyboard.TargetProperty="ScaleY"
+            From="1.0" To="0.0" Duration="0:0:0.25" />
+
+        <!-- Zoom (Zoom avant) pour la flèche droite -->
+        <DoubleAnimation 
+            Storyboard.TargetName="RightArrowScale" 
+            Storyboard.TargetProperty="ScaleX"
+            From="0.0" To="1.0" Duration="0:0:0.25" BeginTime="0:0:0.25" />
+        <DoubleAnimation 
+            Storyboard.TargetName="RightArrowScale" 
+            Storyboard.TargetProperty="ScaleY"
+            From="0.0" To="1.0" Duration="0:0:0.25" BeginTime="0:0:0.25" />
+    </Storyboard>
+
+    <!-- Animation pulsation pour l'indicateur gauche -->
+    <Storyboard x:Key="PulseLeftIndicator" RepeatBehavior="Forever">
+    </Storyboard>
+    
+    <!-- Animation pulsation pour l'indicateur droit -->
+    <Storyboard x:Key="PulseRightIndicator" RepeatBehavior="Forever">
+    </Storyboard>
+
+    <Style TargetType="{x:Type Main}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Main}">
+                    <Grid x:Name="PART_MainHost"
+                          d:DesignWidth="{StaticResource DesignWidth}"
+                          d:DesignHeight="{StaticResource DesignHeight}"
+                          d:DataContext="{x:Static DesignMainViewModel.DesignIntance}">
+                        <Grid x:Name="PART_ViewHost" Background="White">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+			<!-- 1ere ligne du haut -->
+							<Grid Grid.Row="0" Background="#FF00B9FE"
+                                  Height="110" d:IsLocked="True">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+								
+								<Image Grid.Column="0" Margin="19.833,21.156,1370.735,13.844" Source="../Images/network.png" Stretch="Fill" Height="75" Grid.ColumnSpan="1" Width="75"/>
+								<!-- Ombre en haut -->
+                                <TextBlock Foreground="Black"
+           HorizontalAlignment="Center" VerticalAlignment="Center"
+           FontSize="48" Text="FREE PLAY"
+           Margin="823.275,21.156,423.343,25"
+           FontWeight="Bold">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect Color="Black" ShadowDepth="1" Direction="270" BlurRadius="0" Opacity="1"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+
+                                <!-- Ombre en bas -->
+                                <TextBlock Foreground="Black"
+           HorizontalAlignment="Center" VerticalAlignment="Center"
+           FontSize="48" Text="FREE PLAY"
+           Margin="823.275,21.156,423.343,25"
+           FontWeight="Bold">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect Color="Black" ShadowDepth="1" Direction="90" BlurRadius="0" Opacity="1"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+
+                                <!-- Ombre à gauche -->
+                                <TextBlock Foreground="Black"
+           HorizontalAlignment="Center" VerticalAlignment="Center"
+           FontSize="48" Text="FREE PLAY"
+           Margin="823.275,21.156,423.343,25"
+           FontWeight="Bold">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect Color="Black" ShadowDepth="1" Direction="180" BlurRadius="0" Opacity="1"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+
+                                <!-- Ombre à droite -->
+                                <TextBlock Foreground="Black"
+           HorizontalAlignment="Center" VerticalAlignment="Center"
+           FontSize="48" Text="FREE PLAY"
+           Margin="823.275,21.156,423.343,25"
+           FontWeight="Bold">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect Color="Black" ShadowDepth="1" Direction="0" BlurRadius="0" Opacity="1"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+
+                                <!-- Texte blanc au-dessus -->
+                                <TextBlock Foreground="White"
+           HorizontalAlignment="Center" VerticalAlignment="Center"
+           FontSize="48" Text="FREE PLAY"
+           Margin="823.275,21.156,423.343,25"
+           FontWeight="Bold"/>
+
+                                <!-- Ombre haut -->
+                                <TextBlock Foreground="Black"
+           HorizontalAlignment="Left" VerticalAlignment="Center"
+           FontSize="48" Text="A1"
+           Margin="1831.443,21.156,-411.202,25"
+           FontWeight="Bold">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect Color="Black" ShadowDepth="1" Direction="270" BlurRadius="0" Opacity="1"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+
+                                <!-- Ombre bas -->
+                                <TextBlock Foreground="Black"
+           HorizontalAlignment="Left" VerticalAlignment="Center"
+           FontSize="48" Text="A1"
+           Margin="1831.443,21.156,-411.202,25"
+           FontWeight="Bold">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect Color="Black" ShadowDepth="1" Direction="90" BlurRadius="0" Opacity="1"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+
+                                <!-- Ombre gauche -->
+                                <TextBlock Foreground="Black"
+           HorizontalAlignment="Left" VerticalAlignment="Center"
+           FontSize="48" Text="A1"
+           Margin="1831.443,21.156,-411.202,25"
+           FontWeight="Bold">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect Color="Black" ShadowDepth="1" Direction="180" BlurRadius="0" Opacity="1"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+
+                                <!-- Ombre droite -->
+                                <TextBlock Foreground="Black"
+           HorizontalAlignment="Left" VerticalAlignment="Center"
+           FontSize="48" Text="A1"
+           Margin="1831.443,21.156,-411.202,25"
+           FontWeight="Bold">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect Color="Black" ShadowDepth="1" Direction="0" BlurRadius="0" Opacity="1"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+
+                                <!-- Texte blanc au-dessus -->
+                                <TextBlock Foreground="White"
+           HorizontalAlignment="Left" VerticalAlignment="Center"
+           FontSize="48" Text="A1"
+           Margin="1831.443,21.156,-411.202,25"
+           FontWeight="Bold"/>
+								
+                            </Grid>
+			<!-- FIN 1ere ligne du haut -->	
+			
+			<!-- 2eme  ligne du haut avec All.net défilant -->				
+					         <Grid Grid.Row="1" Background="#FFC8FAFC"
+      Height="Auto" Margin="0,0,0,887.667">
+
+                                <Grid.Resources>
+                                    <Storyboard x:Key="ScrollTextAnimation" RepeatBehavior="Forever">
+                                        <DoubleAnimation Storyboard.TargetName="MoveTextTransform"
+                             Storyboard.TargetProperty="X"
+                             From="1400" To="-1400"
+                             Duration="0:0:8"
+                             RepeatBehavior="Forever"/>
+                                    </Storyboard>
+                                </Grid.Resources>
+
+                                <Grid.Triggers>
+                                    <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                                        <BeginStoryboard Storyboard="{StaticResource ScrollTextAnimation}"/>
+                                    </EventTrigger>
+                                </Grid.Triggers>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="24" />
+                                    <ColumnDefinition Width="Auto" MinWidth="76" />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="100" />
+                                </Grid.ColumnDefinitions>
+
+                                <Canvas Grid.Column="0" ClipToBounds="True" Grid.ColumnSpan="5">
+                                    <TextBlock x:Name="___TextBlock___ALL_net_P_ras_" Foreground="Black"
+                   FontSize="48" FontFamily="Yu Gothic Medium" FontWeight="Bold"
+                   Height="68.9" Canvas.Left="598.5" Canvas.Top="3.433">
+                                        <TextBlock.RenderTransform>
+                                            <TranslateTransform x:Name="MoveTextTransform"/>
+                                        </TextBlock.RenderTransform>
+            <Run Text="ALL.Net P-ras MULTI version 3"/>
+                                    </TextBlock>
+                                </Canvas>
+                            </Grid>		
+							<!-- FIN 2eme  ligne du haut avec All.net défilant -->	
+							
+							<!-- COVERS -->	
+                            <DockPanel Grid.Row="1" VerticalAlignment="Bottom" LastChildFill="True" ScrollViewer.HorizontalScrollBarVisibility="Hidden">                
+                                <ListBoxEx x:Name="PART_ListGameItems" Margin="25,0,25,150"
+                                           Background="Transparent" BorderThickness="0"
+                                           DockPanel.Dock="Bottom"
+                                           KeyboardNavigation.DirectionalNavigation="Once"
+                                           HorizontalAlignment="Center"
+                                           ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                                    <ListBoxEx.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal" 
+                                                        VerticalAlignment="Bottom"
+                                                        ClipToBounds="True"/>
+                                        </ItemsPanelTemplate>
+                                    </ListBoxEx.ItemsPanel>
+                                </ListBoxEx>
+                            </DockPanel>
+
+                            <!-- Indicateur de jeux à gauche avec flèche -->
+                            <Grid x:Name="LeftScrollIndicator" 
+                                  Grid.Row="1"
+                                  Width="90" Height="90"
+                                  HorizontalAlignment="Left" 
+                                  VerticalAlignment="Center"
+                                  Margin="15,0,0,150"
+                                  Visibility="Visible"
+                                  Panel.ZIndex="999"
+                                  Opacity="0.5"
+                                  RenderTransformOrigin="0.5,0.5">
+                                <Grid.RenderTransform>
+                                    <TransformGroup>
+                                        <RotateTransform Angle="180"/>
+                                        <ScaleTransform x:Name="LeftArrowScale" ScaleX="1" ScaleY="1"/>
+                                    </TransformGroup>
+                                </Grid.RenderTransform>
+                                <!-- Image de la flèche avec rotation de 180° pour effet miroir -->
+                                <Image Source="../Images/fleche.png" 
+                                       Stretch="Fill" 
+                                       Width="90" 
+                                       Height="90">
+                                </Image>
+                            </Grid>
+                            
+                            <!-- Indicateur de jeux à droite -->
+                            <Grid x:Name="RightScrollIndicator" 
+                                  Grid.Row="1"
+                                  Width="90" Height="90"
+                                  HorizontalAlignment="Right" 
+                                  VerticalAlignment="Center"
+                                  Margin="0,0,15,150"
+                                  Visibility="Visible"
+                                  Panel.ZIndex="999"
+                                  Opacity="0.5"
+                                  RenderTransformOrigin="0.5,0.5">
+                                <Grid.RenderTransform>
+                                    <ScaleTransform x:Name="RightArrowScale" ScaleX="1" ScaleY="1"/>
+                                </Grid.RenderTransform>
+                                <!-- Image de la flèche normale -->
+                                <Image Source="../Images/fleche.png" 
+                                       Stretch="Fill" 
+                                       Width="90" 
+                                       Height="90">
+                                </Image>
+                            </Grid>
+							
+							<!-- ligne du bas -->	
+                            <Grid Grid.Row="1" Background="#FF00B9FE"
+                              Height="Auto" Margin="0,812.5,0,0" Grid.RowSpan="1" d:IsLocked="True">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="899*" />
+                                    <ColumnDefinition Width="531*"/>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="100" />
+                                </Grid.ColumnDefinitions>
+								<Image Grid.Column="0" Margin="15,99.5,10,10" Source="../Images/headphone-icon-touch.png" Stretch="Fill" Width="75" Height="48"/>
+                                <Image Grid.Column="2" Margin="0,99.5,1006.315,10" Source="../Images/standby-ic-icon ON.png" Stretch="Fill" Width="75" Height="48" Grid.ColumnSpan="1"/>
+                                <Image Grid.Column="2" Margin="84.966,99.5,921.348,10" Source="../Images/gamepad-about-iconblue.png" Stretch="Fill" Width="75" Height="48"/>
+                                <Image Grid.Column="2" Margin="610.298,0,298.017,17.25" Source="../Images/validate.png" Stretch="Fill" Width="Auto" Height="139"/>
+                                <Image Grid.Column="2" Margin="963.891,0,583.108,17.25" Source="../Images/cancel.png" Stretch="Fill" Width="173" Height="139" Grid.ColumnSpan="2"/>
+								
+								<!-- TEXTE VALIDATE -->
+								<TextBlock x:Name="___TextBlock_VALIDATE" Foreground="White"
+           HorizontalAlignment="Center" VerticalAlignment="Bottom"
+           FontSize="48" Grid.Column="2" FontFamily="Yu Gothic Medium" FontWeight="Bold"
+           Margin="735,-26.9,122.423,50" Grid.ColumnSpan="1" Text="Confirm">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect Color="Black" 
+										Direction="315" 
+										ShadowDepth="4" 
+										Opacity="1.0" 
+										BlurRadius="0"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+
+								<!-- TEXTE CANCEL -->
+                                <TextBlock x:Name="___TextBlock_CANCEL" Foreground="White"
+           HorizontalAlignment="Center" VerticalAlignment="Bottom"
+           FontSize="48" Grid.Column="3" FontFamily="Yu Gothic Medium" FontWeight="Bold"
+           Margin="0,-26.9,426.585,50" Grid.ColumnSpan="1" Text="Cancel">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect Color="Black" 
+									    Direction="315" 
+									    ShadowDepth="4" 
+									    Opacity="1.0" 
+									    BlurRadius="0"/>
+									</TextBlock.Effect>
+									
+									<!-- ROND ROSE AVEC OMBRE -->
+                                </TextBlock>
+								<!-- Conteneur pour le rond rose avec ombre -->
+                                <Grid Grid.Column="3" 
+                                      Margin="450.184,-70.25,48.5,87.749"
+                                      Width="140" 
+                                      Height="140"
+                                      RenderTransformOrigin="0.5,0.5">
+                                    <Grid.RenderTransform>
+                                        <ScaleTransform x:Name="RondRoseImage" ScaleX="1" ScaleY="1"/>
+                                    </Grid.RenderTransform>
+                                    
+                                    <!-- Image de la flèche avec ombre à gauche sans flou -->
+                                    <Image Source="../Images/rond rose.png" 
+                                          Stretch="Fill" 
+                                          Width="140" 
+                                          Height="140">
+                                        <Image.Effect>
+                                            <DropShadowEffect Color="Black"
+                                                            Direction="180"
+                                                            ShadowDepth="10"
+                                                            Opacity="0.2"
+                                                            BlurRadius="0"/>
+                                        </Image.Effect>  
+                                    </Image>
+                                </Grid>
+
+							<!-- FIN ligne du bas -->	
+                            </Grid>
+                        </Grid>
+
+                        <GameDetails x:Name="PART_ElemGameDetails" Grid.RowSpan="3"
+                                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+						<!-- 
+                        <GameStatus x:Name="PART_ElemGameStatus" Grid.RowSpan="3"
+                                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/> -->	
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="ListBox.SelectionChanged" SourceName="PART_ListGameItems">
+                            <BeginStoryboard Storyboard="{StaticResource ZoomTriangle}" />
+                        </EventTrigger>
+                        
+                        <!-- Démarrage des animations de pulsation au chargement -->
+                        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                            <BeginStoryboard Storyboard="{StaticResource PulseLeftIndicator}" />
+                            <BeginStoryboard Storyboard="{StaticResource PulseRightIndicator}" />
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+	
+</ResourceDictionary>
